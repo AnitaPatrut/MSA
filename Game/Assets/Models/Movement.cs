@@ -17,7 +17,13 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Turning();
         Move();
+    }
+
+    void Turning()
+    {
+        anim.SetFloat("Turn", Input.GetAxis("Horizontal"));
     }
 
     void Move()
