@@ -19,6 +19,11 @@ public class Movement : MonoBehaviour
     {
         Turning();
         Move();
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            anim.SetTrigger("Jump");
+        }
     }
 
     void Turning()
