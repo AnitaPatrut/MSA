@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody myBody;
-    public float moveForce = 10f;
+    public float moveForce = 20f;
 
     private FixedJoystick joystick;
 
