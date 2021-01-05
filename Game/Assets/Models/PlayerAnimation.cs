@@ -20,4 +20,5 @@ public class PlayerAnimation : MonoBehaviour
     {
         anim.SetTrigger("Jump");
     }
+
 }

@@ -7,10 +7,14 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody myBody;
     public float moveForce = 20f;
-
+    public bool grabbed;
     private FixedJoystick joystick;
-
     private PlayerAnimation anim;
+
+    public Inventory inventory;
+
+    public HUD Hud;
+
 
     void Awake()
     {
@@ -19,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<PlayerAnimation>();
 
         GameObject.Find("Jump button").GetComponent<Button>().onClick.AddListener(PlayerJump);
+        GameObject.Find("Grab button").GetComponent<Button>().onClick.AddListener(GrabItem);
     }
 
     // Update is called once per frame
@@ -43,5 +48,36 @@ public class PlayerMovement : MonoBehaviour
     public void PlayerJump()
     {
         anim.Jump();
+    }
+
+    private IInventoryItem mItemToPick = null;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IInventoryItem item = other.GetComponent<IInventoryItem>();
+        if (item != null)
+        {
+            // inventory.AddItem(item);
+            mItemToPick = item;
+            Hud.OpenMessagePanel("");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        IInventoryItem item = other.GetComponent<IInventoryItem>();
+        if (item != null)
+        {
+            // inventory.AddItem(item);
+            mItemToPick = null;
+            Hud.CloseMessagePanel();
+        }
+    }
+
+    public void GrabItem()
+    {
+        inventory.AddItem(mItemToPick);
+        mItemToPick.OnPickup();
+        Hud.CloseMessagePanel();
     }
 }
