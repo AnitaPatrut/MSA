@@ -11,6 +11,21 @@ public class Menu : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
           SceneManager.LoadScene("Level 1");
     }
+    public void PlayGame2()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Level 2");
+    }
+    public void PlayGame3()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Level 3");
+    }
+    public void PlayGame4()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Level 4");
+    }
 
     public void QuitGame()
     {
