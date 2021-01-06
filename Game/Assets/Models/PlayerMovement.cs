@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody myBody;
-    public float moveForce = 20f;
+    public float moveForce = 100f;
     public bool grabbed;
     private FixedJoystick joystick;
     private PlayerAnimation anim;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<PlayerAnimation>();
 
         GameObject.Find("Jump button").GetComponent<Button>().onClick.AddListener(PlayerJump);
-        GameObject.Find("Grab button").GetComponent<Button>().onClick.AddListener(GrabItem);
+        //GameObject.Find("Grab button").GetComponent<Button>().onClick.AddListener(GrabItem);
     }
 
     // Update is called once per frame
@@ -56,8 +56,8 @@ public class PlayerMovement : MonoBehaviour
     {
         IInventoryItem item = other.GetComponent<IInventoryItem>();
         if (item != null)
-        {
-            // inventory.AddItem(item);
+        { 
+            //inventory.AddItem(item);
             mItemToPick = item;
             Hud.OpenMessagePanel("");
         }
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         IInventoryItem item = other.GetComponent<IInventoryItem>();
         if (item != null)
         {
-            // inventory.AddItem(item);
+            //inventory.AddItem(item);
             mItemToPick = null;
             Hud.CloseMessagePanel();
         }
@@ -76,8 +76,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void GrabItem()
     {
-        inventory.AddItem(mItemToPick);
-        mItemToPick.OnPickup();
-        Hud.CloseMessagePanel();
+
+            inventory.AddItem(mItemToPick);
+            mItemToPick.OnPickup();
+            Hud.CloseMessagePanel();
+        
     }
 }
